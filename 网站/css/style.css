@@ -1,0 +1,721 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4a90e2; /* 浙江大学主色调 - 浅蓝色 */
+    --secondary-color: #003d82; /* 深蓝色 */
+    --text-dark: #333;
+    --text-light: #666;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    /* 导航栏左侧留空，占位使用 */
+    flex: 1;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero区域 */
+.hero {
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+/* 左上角标题 */
+.hero-title-top {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #333;
+    font-family: "STXingkai", "Xingkai SC", "STKaiti", "KaiTi", "楷体", "行楷", serif;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* 轮播图容器 */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    z-index: 1;
+}
+
+.carousel-link:nth-child(1) {
+    z-index: 1;
+}
+
+.carousel-link:nth-child(2) {
+    z-index: 0;
+}
+
+.carousel-link:nth-child(3) {
+    z-index: 0;
+}
+
+.carousel-link:nth-child(4) {
+    z-index: 0;
+}
+
+.carousel-link:hover .carousel-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+}
+
+.carousel-link:hover .carousel-image {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+.carousel-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    padding: 3rem 4rem;
+    z-index: 2;
+}
+
+.carousel-overlay h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.carousel-overlay p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 轮播指示器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 2rem;
+    right: 4rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.indicator.active {
+    background: #ffffff;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 主要内容区域 */
+.main-content {
+    padding: 4rem 0;
+}
+
+.content-section {
+    margin-bottom: 5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #5b9bd5, #003d82);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* 内容展示区域 */
+.section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.section-content.reverse {
+    direction: rtl;
+}
+
+.section-content.reverse > * {
+    direction: ltr;
+}
+
+.section-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.section-image:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.content-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.section-text {
+    padding: 1.5rem;
+}
+
+.section-text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* 招生信息区块：无图片，单列全文展示 */
+.admission-content {
+    grid-template-columns: 1fr;
+}
+.admission-content .section-text {
+    padding: 0 0.5rem;
+}
+.admission-policy-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0 1.5rem;
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+.admission-policy-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 1rem;
+    position: relative;
+}
+.admission-policy-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+.admission-links-title {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem !important;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.admission-links {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 1.5rem;
+}
+.admission-links li {
+    margin-bottom: 0.5rem;
+}
+.admission-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+.admission-links a:hover {
+    text-decoration: underline;
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #5b9bd5, #003d82);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.read-more-btn:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 卡片网格布局：固定2列，四个卡片排成2×2 */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.info-card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.card-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.card-link:hover {
+    color: #003d82;
+}
+
+/* 校友网格 */
+.alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.alumni-card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.alumni-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.alumni-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.alumni-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.alumni-major {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.alumni-desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.section-footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* 留言板区域 */
+.message-section {
+    background: var(--bg-light);
+    padding: 3rem;
+    border-radius: 12px;
+    margin-top: 4rem;
+}
+
+.message-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.message-form-container h3,
+.messages-container h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.message-form {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #5b9bd5, #003d82);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.messages-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message-item {
+    background: var(--bg-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.message-author {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.message-date,
+.message-time {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.message-content,
+.message-body {
+    color: var(--text-light);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* 运营者回复样式 */
+.message-reply {
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #e8f4fd 0%, #f0f7ff 100%);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 0 6px 6px 0;
+}
+
+.reply-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.reply-content {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.no-messages {
+    text-align: center;
+    color: var(--text-light);
+    padding: 2rem;
+}
+
+/* 页脚 */
+.footer {
+    background: var(--text-dark);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        height: 600px;
+    }
+
+    .hero-title-top {
+        top: 1rem;
+        left: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.08em;
+    }
+
+    .carousel-overlay {
+        padding: 2rem 1.5rem;
+    }
+
+    .carousel-overlay h2 {
+        font-size: 1.8rem;
+    }
+
+    .carousel-overlay p {
+        font-size: 1rem;
+    }
+
+    .carousel-indicators {
+        bottom: 1rem;
+        right: 1.5rem;
+        gap: 0.5rem;
+    }
+
+    .indicator {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .section-content {
+        grid-template-columns: 1fr;
+    }
+
+    .section-content.reverse {
+        direction: ltr;
+    }
+
+    .message-board {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-grid,
+    .alumni-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+

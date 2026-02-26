@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="message-item">
                     <div class="message-header">
                         <span class="message-author">${escapeHtml(msg.name)}</span>
-                        <span class="message-time">${formatTime(msg.created_at)}</span>
+                
                     </div>
                     <div class="message-body">${escapeHtml(msg.content)}</div>
                     ${msg.reply ? `
@@ -239,4 +239,5 @@ document.addEventListener('DOMContentLoaded', function() {
         // 不再调用 startCarousel()，始终停在当前页（默认第一页）
     }
 });
+
 

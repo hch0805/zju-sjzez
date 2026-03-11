@@ -71,7 +71,7 @@ body {
 /* Hero区域 */
 .hero {
     position: relative;
-    height: 800px;
+    height: 500px;
     overflow: hidden;
     background: #f5f5f5;
 }
@@ -660,7 +660,7 @@ body {
     }
 
     .hero {
-        height: 600px;
+        height: 400px;
     }
 
     .hero-title-top {
@@ -718,4 +718,5 @@ body {
         font-size: 2rem;
     }
 }
+
 
